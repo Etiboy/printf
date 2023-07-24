@@ -19,5 +19,7 @@ int _putstr(char *str);
 int print_char(va_list *args);
 int print_string(va_list *args);
 int _printf(const char *format, ...);
+int print_digit(va_list *args);
+int get_int(int number);
 
 #endif

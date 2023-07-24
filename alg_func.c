@@ -30,3 +30,16 @@ int print_string(va_list *args)
 	count = _putstr(va_arg(*args, char *));
 	return (count);
 }
+
+/**
+ *print_digit - iterate through a digit
+ *@args: an integer
+ */
+
+int print_digit(va_list *args)
+{
+	int count = 0;
+
+	count = get_int(va_arg(*args, int));
+	return (count);
+}

@@ -13,11 +13,11 @@ int _printf(const char *format, ...)
 {
 	va_list args;
 	int index = 0, j = 0, counter = 0, length;
-	fmt format_s[10] = {{'c', print_char}, {'s', print_string}};
+	fmt format_s[10] = {{'c', print_char}, {'s', print_string},
+			    {'d', print_digit}, {'i', print_digit}};
 
 	if (format == NULL)
 		return (-1);
-
 	length = strlen(format);
 	while (index < length)
 	{
