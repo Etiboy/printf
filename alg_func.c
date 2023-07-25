@@ -11,8 +11,13 @@
 int print_char(va_list *args)
 {
 	int count = 0;
+	char ch;
 
-	count = _putchar(va_arg(*args, int));
+	ch = va_arg(*args, int);
+
+	if (ch == 0)
+		return (-1);
+	count = _putchar(ch);
 	return (count);
 }
 
@@ -27,19 +32,27 @@ int print_string(va_list *args)
 {
 	int count = 0;
 
-	count = _putstr(va_arg(*args, char *));
+	char *str = va_arg(*args, char *);
+
+	if (str == NULL)
+		return (-1);
+	count = _putstr(str);
 	return (count);
 }
 
 /**
  *print_digit - iterate through a digit
  *@args: an integer
+ *
+ *Return: number of digits printed
  */
 
 int print_digit(va_list *args)
 {
-	int count = 0;
+	int result, count = 0;
 
-	count = get_int(va_arg(*args, int));
+	result = va_arg(*args, int);
+
+	count = get_int(result);
 	return (count);
 }

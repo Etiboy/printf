@@ -23,13 +23,11 @@ int _putchar(char c)
 
 int _putstr(char *str)
 {
-	int length = 0, count = 0, index = 0;
+	int count = 0, index = 0;
 
-	length = strlen(str);
-
-	while (index < length)
+	while (str[index] != '\0')
 	{
-		_putchar(str[index]);
+		_putchar(*(str + index));
 		count += 1;
 		index++;
 	}
@@ -38,39 +36,34 @@ int _putstr(char *str)
 
 /**
  *get_int - access individual digit of an integer
- *@number: an integer
+ *@num: an integer
  *Return: number of charactetrs printed
  */
 
-int get_int(int number)
+int get_int(int num)
 {
-	int quotent, count = 0;
+	unsigned int abs, abs_num, count = 0, count_num;
 
-	if (number >= 0)
+	if (num < 0)
 	{
-		if (number == 0)
-			return (0);
-		else
-		{
-			quotent = number / 10;
-			count += 1;
-		}
-		get_int(quotent);
-		_putchar(number % 10 + '0');
+		count += _putchar('-');
+		abs = (num * -1);
 	}
 	else
 	{
-		_putchar('-');
-		number = -number;
-		if (number == 0)
-			return (0);
-		else
-		{
-			quotent = number / 10;
-			count += 1;
-		}
-		get_int(quotent);
-		_putchar(number % 10 + '0');
+		abs = num;
+	}
+	abs_num = abs;
+	count_num = 1;
+	while (abs_num >= 10)
+	{
+		abs_num /= 10;
+		count_num *= 10;
+	}
+	while (count_num >= 1)
+	{
+		count += _putchar(((abs / count_num) % 10) + '0');
+		count_num /= 10;
 	}
 	return (count);
 }
